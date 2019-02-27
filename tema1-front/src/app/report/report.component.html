@@ -1,0 +1,13 @@
+Raport: <div style="white-space: pre;">{{report.message}} </div>
+<br>
+Link: <a href="{{report.link}}">{{report.link}}</a>
+<br>
+<br>
+<button (click)="clickButton()">Raport locatie random</button>
+<br>
+<br>
+<input #latitude value="47.173176" name="Latitudine">&nbsp;(latitudine)
+<br>
+<input #longitude value="27.573598" name="Longitudine">&nbsp;(longitudine)
+<br>
+<button (click)="generateCoordinates(latitude.value,longitude.value)">Raport pentru locatie</button>

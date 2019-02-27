@@ -1,0 +1,18 @@
+Latitudine:  {{geoInformation.latitude}}
+<br>
+Longitudine: {{geoInformation.longitude}}
+<br>
+Harta: <a href="{{geoInformation.map}}">{{geoInformation.map}}</a>
+<br>
+Timezone:  {{geoInformation.timezone}}
+<br>
+Adresa:  {{geoInformation.address}}
+<br>
+<button (click)="clickButton()">Locatie random</button>
+<br>
+<br>
+<input #latitude value="47.173176" name="Latitudine">&nbsp;(latitudine)
+<br>
+<input #longitude value="27.573598" name="Longitudine">&nbsp;(longitudine)
+<br>
+<button (click)="generateCoordinates(latitude.value,longitude.value)">Gaseste locatia</button>

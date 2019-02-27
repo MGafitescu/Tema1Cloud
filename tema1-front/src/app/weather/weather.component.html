@@ -1,0 +1,24 @@
+Tip de vreme:  {{weather.main}}
+<br>
+Descriere: {{weather.description}}
+<br>
+Temperatura: {{weather.temp}} grade Celsius
+<br>
+Presiune:  {{weather.pressure}} mbar
+<br>
+Umiditate:  {{weather.humidity}} %
+<br>
+Viteza vantului:  {{weather.windspeed}} metri/secunda
+<br>
+Latitudine:  {{weather.latitude}}
+<br>
+Longitudine: {{weather.longitude}}
+<br>
+<button (click)="clickButton()">Vremea la o locatie random</button>
+<br>
+<br>
+<input #latitude value="47.173176" name="Latitudine">&nbsp;(latitudine)
+<br>
+<input #longitude value="27.573598" name="Longitudine">&nbsp;(longitudine)
+<br>
+<button (click)="generateCoordinates(latitude.value,longitude.value)">Vremea la aceste coordonate</button>

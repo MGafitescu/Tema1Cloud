@@ -1,0 +1,13 @@
+<ul>
+  <li *ngFor="let metrics of metricsList">
+    <br> Nume: {{metrics.nume}} 
+    <br> Url: {{metrics.url}} 
+    <br> Numar apeluri: {{metrics.apeluri}} 
+    <br> Raspunsuri: {{metrics.status | json}}
+    <br> Latenta medie: {{metrics.latenta_avg}} 
+    <br> Latenta maxima: {{metrics.latenta_max}} 
+    <br> Latenta minima: {{metrics.latenta_min}} 
+  </li>
+  <br>
+  <br>
+</ul>
