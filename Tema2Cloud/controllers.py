@@ -29,6 +29,12 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
             except Exception as e:
                 print(e)
                 response, content, content_type = (500, "Internal server error", "text/html")
+        elif parsed_url.path.startswith("/dinosaurs"):
+            try:
+                response, content, content_type = dinos_get_controller(parsed_url.path)
+            except Exception as e:
+                print(e)
+                response, content, content_type = (500, "Internal server error", "text/html")
         else:
             response, content, content_type = (400, "Bad route", "text/html")
 
@@ -63,6 +69,18 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
                 except Exception as e:
                     print(e)
                     response, content, content_type = (500, "Internal server error", "text/html")
+            elif parsed_url.path.startswith("/types"):
+                try:
+                    response, content, content_type = types_post_controller(parsed_url.path, payload)
+                except Exception as e:
+                    print(e)
+                    response, content, content_type = (500, "Internal server error", "text/html")
+            elif parsed_url.path.startswith("/dinosaurs"):
+                try:
+                    response, content, content_type = dinos_post_controller(parsed_url.path, payload)
+                except Exception as e:
+                    print(e)
+                    response, content, content_type = (500, "Internal server error", "text/html")
 
         self.send(response, content, content_type)
         return
@@ -94,6 +112,18 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
                 except Exception as e:
                     print(e)
                     response, content, content_type = (500, "Internal server error", "text/html")
+            elif parsed_url.path.startswith("/types"):
+                try:
+                    response, content, content_type = types_put_controller(parsed_url.path, payload)
+                except Exception as e:
+                    print(e)
+                    response, content, content_type = (500, "Internal server error", "text/html")
+            elif parsed_url.path.startswith("/dinosaurs"):
+                try:
+                    response, content, content_type = dinos_put_controller(parsed_url.path, payload)
+                except Exception as e:
+                    print(e)
+                    response, content, content_type = (500, "Internal server error", "text/html")
 
         self.send(response, content, content_type)
         return
@@ -103,6 +133,18 @@ class testHTTPServer_RequestHandler(BaseHTTPRequestHandler):
         if parsed_url.path.startswith("/periods"):
             try:
                 response, content, content_type = periods_delete_controller(parsed_url.path)
+            except Exception as e:
+                print(e)
+                response, content, content_type = (500, "Internal server error", "text/html")
+        elif parsed_url.path.startswith("/types"):
+            try:
+                response, content, content_type = types_delete_controller(parsed_url.path)
+            except Exception as e:
+                print(e)
+                response, content, content_type = (500, "Internal server error", "text/html")
+        elif parsed_url.path.startswith("/dinosaurs"):
+            try:
+                response, content, content_type = dinos_delete_controller(parsed_url.path)
             except Exception as e:
                 print(e)
                 response, content, content_type = (500, "Internal server error", "text/html")
@@ -153,6 +195,7 @@ def periods_delete_controller(path):
         response, content, content_type = services.delete_period(id)
     return response, content, content_type
 
+
 def types_get_controller(path):
     response, content, content_type = (400, "Bad route", "text/html")
     if path == "/types":
@@ -161,6 +204,78 @@ def types_get_controller(path):
     if match is not None:
         id = match.group(1)
         response, content, content_type = services.get_type(id)
+    return response, content, content_type
+
+
+def types_post_controller(path, payload):
+    if path == "/types":
+        response, content, content_type = services.add_type(payload)
+    else:
+        response, content, content_type = (400, "Bad route", "text/html")
+    return response, content, content_type
+
+
+def types_put_controller(path, payload):
+    response, content, content_type = (400, "Bad route", "text/html")
+    print(path)
+    if path == "/types":
+        response, content, content_type = 405, "PUT not allowed on collection", "text/html"
+    match = re.match(r"/types/(\d+)", path)
+    if match is not None:
+        id = match.group(1)
+        response, content, content_type = services.update_type(payload, id)
+    return response, content, content_type
+
+
+def types_delete_controller(path):
+    response, content, content_type = (400, "Bad route", "text/html")
+    if path == "/types":
+        response, content, content_type = 405, "DELETE not allowed on collection", "text/html"
+    match = re.match(r"/types/(\d+)$", path)
+    if match is not None:
+        id = match.group(1)
+        response, content, content_type = services.delete_type(id)
+    return response, content, content_type
+
+
+def dinos_get_controller(path):
+    response, content, content_type = (400, "Bad route", "text/html")
+    if path == "/dinosaurs":
+        response, content, content_type = services.get_dinos()
+    match = re.match(r"/dinosaurs/(\d+)$", path)
+    if match is not None:
+        id = match.group(1)
+        response, content, content_type = services.get_dino(id)
+    return response, content, content_type
+
+
+def dinos_post_controller(path, payload):
+    if path == "/dinosaurs":
+        response, content, content_type = services.add_dino(payload)
+    else:
+        response, content, content_type = (400, "Bad route", "text/html")
+    return response, content, content_type
+
+
+def dinos_put_controller(path, payload):
+    response, content, content_type = (400, "Bad route", "text/html")
+    if path == "/dinosaurs":
+        response, content, content_type = 405, "PUT not allowed on collection", "text/html"
+    match = re.match(r"/dinosaurs/(\d+)", path)
+    if match is not None:
+        id = match.group(1)
+        response, content, content_type = services.update_dino(payload, id)
+    return response, content, content_type
+
+
+def dinos_delete_controller(path):
+    response, content, content_type = (400, "Bad route", "text/html")
+    if path == "/dinosaurs":
+        response, content, content_type = 405, "DELETE not allowed on collection", "text/html"
+    match = re.match(r"/dinosaurs/(\d+)$", path)
+    if match is not None:
+        id = match.group(1)
+        response, content, content_type = services.delete_dino(id)
     return response, content, content_type
 
 
