@@ -1,0 +1,2118 @@
+{
+	"info": {
+		"_postman_id": "7b6e1cc5-704e-4550-919b-6e1ad6b1cd02",
+		"name": "Tema2Cloud",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "200/204 - get all - periods",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8081/periods",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"periods"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "200 - get period by id - periods",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8081/periods/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"periods",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "404 - get period by id - periods",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8081/periods/0",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"periods",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "400 - bad route - periods",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8081/periods/-1",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"periods",
+						"-1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "415 - wrong media type - periods",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"Late Cretaceous\",\n\t\"start\":\"100.5\",\n\t\"end\": \"66\",\n\t\"description\": \"aaa\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8081/periods",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"periods"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "400 - empty body - periods",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8081/periods",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"periods"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "415 - malformed json - periods",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"Late Cretaceous\",\n\t\"start\":\"100.5\",\n\t\"end\": \"66\",\n\t\"description\":,\n}"
+				},
+				"url": {
+					"raw": "localhost:8081/periods",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"periods"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "422 - not floats - periods",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"Late Cretaceous\",\n\t\"start\":\"a\",\n\t\"end\": \"a\",\n\t\"description\": \"aaa\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8081/periods",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"periods"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "422 - wrong dates - period",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"Late Cretaceous\",\n\t\"start\":\"23\",\n\t\"end\": \"66\",\n\t\"description\": \"aaa\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8081/periods",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"periods"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "201/409 - created/conflict - periods",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Late Jurassic\",\n\t\"start\":\"174\",\n\t\"end\":\"145\",\n\t\"description\":\"Jurassic Park\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8081/periods",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"periods"
+					]
+				},
+				"description": "First time returns 201, second time 409"
+			},
+			"response": []
+		},
+		{
+			"name": "415 - wrong media type - periods",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Late Jurassic\",\n\t\"start\":\"174\",\n\t\"end\":\"145\",\n\t\"description\":\"Jurassic Park\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8081/periods/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"periods",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "400 - empty json - periods",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8081/periods/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"periods",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "415 - malformed json - periods",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Late Jurassic\",\n\t\"start\":\"174\",\n\t\"end\":\"145\",\n\t\"description\"\"Jurassic Park\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8081/periods",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"periods"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "405 - put not allowed on collection - periods",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Late Jurassic\",\n\t\"description\":\"Jurassic Park\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8081/periods",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"periods"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "400 - missing fields - periods",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Late Jurassic\",\n\t\"description\":\"Jurassic Park\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8081/periods/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"periods",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "422 - bad dates - periods",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Late Jurassic\",\n\t\"start\":\"120\",\n\t\"end\":\"145\",\n\t\"description\":\"Jurassic Park\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8081/periods/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"periods",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "422 - not floats - periods",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Late Jurassic\",\n\t\"start\":\"aaa\",\n\t\"end\":\"145\",\n\t\"description\":\"Jurassic Park\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8081/periods/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"periods",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "200/409 - modified/conflict - periods",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Late Jurass\",\n\t\"start\":\"174\",\n\t\"end\":\"145\",\n\t\"description\":\"Jurassic Park\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8081/periods/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"periods",
+						"1"
+					]
+				},
+				"description": "First time modified, second time conflict"
+			},
+			"response": []
+		},
+		{
+			"name": "201/409 - created/conflict - periods",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Late\",\n\t\"start\":\"174\",\n\t\"end\":\"145\",\n\t\"description\":\"Jurassic Park\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8081/periods/100",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"periods",
+						"100"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "400 - bad route - periods",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Late Jurassic\",\n\t\"start\":\"174\",\n\t\"end\":\"145\",\n\t\"description\":\"Jurassic Park\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8081/periods/aaa",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"periods",
+						"aaa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "200/204 - subresource - periods/dinosaurs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8081/periods/1/dinosaurs",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"periods",
+						"1",
+						"dinosaurs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "400 - bad route - periods/dinosaurs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8081/periods/a/dinosaurs",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"periods",
+						"a",
+						"dinosaurs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "404 - subresource not found - periods/dinosaurs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8081/periods/1/dinosaurs/0",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"periods",
+						"1",
+						"dinosaurs",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "200 -  subresource - periods/dinosaurs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8081/periods/1/dinosaurs/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"periods",
+						"1",
+						"dinosaurs",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "405 - delete not allowed on collections  - periods",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8081/periods",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"periods"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "404 - not found - periods",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8081/periods/0",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"periods",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "200/404 - deleted/not found - periods",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8081/periods/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"periods",
+						"3"
+					]
+				},
+				"description": "first time deleted, second time not found"
+			},
+			"response": []
+		},
+		{
+			"name": "400 - bad id - periods",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8081/periods/aa",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"periods",
+						"aa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "200/204 - get all - periods",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8081/types",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"types"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "400 - bad id - types",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8081/types/aa",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"types",
+						"aa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "404 - get type - types",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8081/types/0",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"types",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "200 - get type - types",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8081/types/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"types",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "200/204 - subresources - types/dinosaurs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8081/types/1/dinosaurs",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"types",
+						"1",
+						"dinosaurs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "400 - subresources bad id - types/dinosaurs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8081/types/a/dinosaurs",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"types",
+						"a",
+						"dinosaurs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "404 - subresource not found - types/dinosaurs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8081/types/1/dinosaurs/0",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"types",
+						"1",
+						"dinosaurs",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "200 - subrsource - types/dinosaurs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8081/types/1/dinosaurs/5",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"types",
+						"1",
+						"dinosaurs",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "415 - wrong media type - types",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "text/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"name\": \"Theropod\",\n        \"characteristics\": \"Large carnivores that walked on two legs.\",\n        \"taxonomy\": \"Theropoda\",\n        \"id\": 2\n    }"
+				},
+				"url": {
+					"raw": "localhost:8081/types",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"types"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "400 - empty json - types",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8081/types",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"types"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "415 - malformed json - types",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"name\": \"Theropod\",\n        \"characteristics\": \"Large carnivores that walked on two legs.\",\n        \"taxonomy\": \"Thero\n}"
+				},
+				"url": {
+					"raw": "localhost:8081/types",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"types"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "201/409 - created/conflict - types",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"name\": \"Euornithopods\",\n        \"characteristics\": \"Medium-sized herbivores that usually walked on two legs.\",\n        \"taxonomy\": \"Euornithopoda\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8081/types",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"types"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "400 - missing fields - types",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n       \n        \"characteristics\": \"Medium-sized herbivores that usually walked on two legs.\",\n        \"taxonomy\": \"Euornithopoda\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8081/types",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"types"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "405 - put not allowed on collections - types",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"name\": \"Euornithopods\",\n        \"characteristics\": \"Medium-sized herbivores that usually walked on two legs.\",\n        \"taxonomy\": \"Euornithopoda\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8081/types",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"types"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "415 - wrong media type - types",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "text/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"name\": \"Euornithopods\",\n        \"characteristics\": \"Medium-sized herbivores that usually walked on two legs.\",\n        \"taxonomy\": \"Euornithopoda\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8081/types",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"types"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "400 - empty json - types",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8081/types",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"types"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "400 - missing fields - types",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"characteristics\": \"Medium-sized herbivores that usually walked on two legs.\",\n        \"taxonomy\": \"Euornithopoda\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8081/types/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"types",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "415 - malformed json - types",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"name\": \"Euornithopods\",\n        \"characteristics\": \"Medium-sized herbivores that usually walked on two legs.\",\n        \"taxonomy\"a\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8081/types/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"types",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "200/409 - modified/conflict - types",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"name\": \"Euornithop\",\n        \"characteristics\": \"Medium-sized herbivores that usually walked on two legs.\",\n        \"taxonomy\": \"Euornithopoda\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8081/types/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"types",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "201/409 - created/conflict - types",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"name\": \"Aaa\",\n        \"characteristics\": \"Medium-sized herbivores that usually walked on two legs.\",\n        \"taxonomy\": \"Euornithopoda\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8081/types/200",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"types",
+						"200"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "400 - bad id - types",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"name\": \"Euornithopods\",\n        \"characteristics\": \"Medium-sized herbivores that usually walked on two legs.\",\n        \"taxonomy\": \"Euornithopoda\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8081/types/a",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"types",
+						"a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "405 - delete not allowed on collection - types",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8081/types",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"types"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "400 - bad id - types",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8081/types/a",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"types",
+						"a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "404 - not found - types",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8081/types/0",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"types",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "200/404 - deleted/not found - types",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8081/types/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"types",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "200/204 - get all - dinos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8081/dinosaurs",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"dinosaurs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "400 - bad id - dinos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8081/dinosaurs/a",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"dinosaurs",
+						"a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "404 - not found - dinos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8081/dinosaurs/0",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"dinosaurs",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "200 - get dino - dinos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8081/dinosaurs/5",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"dinosaurs",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "415 - wrong media type - dinos",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"name\": \"Pantydrako\",\n        \"dinosaur_type\": \"Sauropod\",\n        \"length\": \"3\",\n        \"weight\": \"200\",\n        \"diet\": \"carnivorous\",\n        \"period\": \"Late Triassic\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8081/dinosaurs",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"dinosaurs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "400 - empty json - dinos",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8081/dinosaurs",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"dinosaurs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "415 - malformed json - dinos",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"name\": \"Pantydrako\",\n        \"dinosaur_type\": \"Sauropod\",\n        \"length\": \"3\",\n        \"weight\": \"200\",\n        \"diet\": \n}"
+				},
+				"url": {
+					"raw": "localhost:8081/dinosaurs",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"dinosaurs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "400 - missing fields - dinos",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n       \n        \"length\": \"3\",\n        \"weight\": \"200\",\n        \"diet\": \"carnivorous\",\n        \"period\": \"Late Triassic\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8081/dinosaurs",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"dinosaurs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "201/409 - created/conflict - dinos",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"name\": \"Pantydrako\",\n        \"dinosaur_type\": \"Sauropod\",\n        \"length\": \"3\",\n        \"weight\": \"200\",\n        \"diet\": \"carnivorous\",\n        \"period\": \"Late Triassic\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8081/dinosaurs",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"dinosaurs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "422 - wrong type - dinos",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"name\": \"Pantydrako\",\n        \"dinosaur_type\": \"Sauro\",\n        \"length\": \"3\",\n        \"weight\": \"200\",\n        \"diet\": \"carnivorous\",\n        \"period\": \"Late Triassic\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8081/dinosaurs",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"dinosaurs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "422 - wrong period - dinos",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"name\": \"Pantydrako\",\n        \"dinosaur_type\": \"Sauropod\",\n        \"length\": \"3\",\n        \"weight\": \"200\",\n        \"diet\": \"carnivorous\",\n        \"period\": \"aac\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8081/dinosaurs",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"dinosaurs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "422 - not numbers - dinos",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"name\": \"Pantydrako\",\n        \"dinosaur_type\": \"Sauropod\",\n        \"length\": \"aa\",\n        \"weight\": \"200\",\n        \"diet\": \"carnivorous\",\n        \"period\": \"Late Triassic\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8081/dinosaurs",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"dinosaurs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "405 - put not allowed on collection - dinos",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"name\": \"Pantydrako\",\n        \"dinosaur_type\": \"Sauropod\",\n        \"length\": \"3\",\n        \"weight\": \"200\",\n        \"diet\": \"carnivorous\",\n        \"period\": \"Late Triassic\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8081/dinosaurs",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"dinosaurs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "415 - wrong media type - dinos",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8081/dinosaurs",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"dinosaurs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "400 - empty json - dinos",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8081/dinosaurs",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"dinosaurs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "415 - malformed json - dinos",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"name\": \"Pantydrako\",\n        \"dino"
+				},
+				"url": {
+					"raw": "localhost:8081/dinosaurs",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"dinosaurs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "400 - missing fields - dinos",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n       \n        \"length\": \"3\",\n        \"weight\": \"200\",\n        \"diet\": \"carnivorous\",\n        \"period\": \"Late Triassic\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8081/dinosaurs/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"dinosaurs",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "422 - wrong type  - dinos",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"name\": \"Pantydrako\",\n        \"dinosaur_type\": \"Saurod\",\n        \"length\": \"3\",\n        \"weight\": \"200\",\n        \"diet\": \"carnivorous\",\n        \"period\": \"Late Triassic\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8081/dinosaurs/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"dinosaurs",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "422 - period does not exist - dinos",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"name\": \"Pantydrako\",\n        \"dinosaur_type\": \"Sauropod\",\n        \"length\": \"3\",\n        \"weight\": \"200\",\n        \"diet\": \"carnivorous\",\n        \"period\": \"Late Tasdsgdg\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8081/dinosaurs/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"dinosaurs",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "422 - not numbers - dinos",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"name\": \"Pantydrako\",\n        \"dinosaur_type\": \"Sauropod\",\n        \"length\": \"adasd\",\n        \"weight\": \"200\",\n        \"diet\": \"carnivorous\",\n        \"period\": \"Late Triassic\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8081/dinosaurs/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"dinosaurs",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "200/409 - modified/conflict - dinos",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"name\": \"Pao\",\n        \"dinosaur_type\": \"Sauropod\",\n        \"length\": \"3\",\n        \"weight\": \"200\",\n        \"diet\": \"carnivorous\",\n        \"period\": \"Late Triassic\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8081/dinosaurs/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"dinosaurs",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "201/409 - created/conflict - dinos",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"name\": \"Vasile\",\n        \"dinosaur_type\": \"Sauropod\",\n        \"length\": \"3\",\n        \"weight\": \"200\",\n        \"diet\": \"carnivorous\",\n        \"period\": \"Late Triassic\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8081/dinosaurs/100",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"dinosaurs",
+						"100"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "405  -  delete not allowed on collection - dinos",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8081/dinosaurs",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"dinosaurs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "400 - bad id - dinos",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8081/dinosaurs/a",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"dinosaurs",
+						"a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "404 - not found - dinos",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8081/dinosaurs/0",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"dinosaurs",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "200/409 - deleted/not found - dinos",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:8081/dinosaurs/4",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"dinosaurs",
+						"4"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

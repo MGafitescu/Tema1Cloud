@@ -12,7 +12,7 @@ class DinosaurView:
 
     def from_dict(self, dino_dict):
         self.name = dino_dict.get("name", None)
-        self.dinosaur_type = dino_dict.get("type", None)
+        self.dinosaur_type = dino_dict.get("dinosaur_type", None)
         self.length = dino_dict.get("length", None)
         self.weight = dino_dict.get("weight", None)
         self.diet = dino_dict.get("diet", None)
