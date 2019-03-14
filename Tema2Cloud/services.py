@@ -260,3 +260,35 @@ def delete_dino(id):
     if response is True:
         return 200, '', 'text/html'
     return 404, 'Resource not found', 'text/html'
+
+
+def get_dinos_by_period(id):
+    dino_list = repository.get_dinos_by_period(id)
+    if dino_list is None:
+        return 404, "Period does not exist", "text/html"
+    if len(dino_list) == 0:
+        response = 204
+        content = ''
+        content_type = "text/html"
+    else:
+        dino_list = [x.to_dict() for x in dino_list]
+        content = json.dumps(dino_list)
+        response = 200
+        content_type = "application/json"
+    return response, content, content_type
+
+
+def get_dinos_by_type(id):
+    dino_list = repository.get_dinos_by_type(id)
+    if dino_list is None:
+        return 404, "Type does not exist", "text/html"
+    if len(dino_list) == 0:
+        response = 204
+        content = ''
+        content_type = "text/html"
+    else:
+        dino_list = [x.to_dict() for x in dino_list]
+        content = json.dumps(dino_list)
+        response = 200
+        content_type = "application/json"
+    return response, content, content_type

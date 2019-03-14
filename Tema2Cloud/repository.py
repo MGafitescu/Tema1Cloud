@@ -233,5 +233,70 @@ def delete_dino(dino_id):
     except ObjectNotFound:
         return False
 
+@db_session
+def get_dinos_by_period(period_id):
+    dinos = []
+    try:
+        period = models.Period[period_id]
+        for dino in period.dinosaurs:
+            dino_view = views.DinosaurView()
+            dino_view.name = dino.name
+            dino_view.length = dino.length
+            dino_view.weight = dino.weight
+            dino_view.period = dino.period.name
+            dino_view.dinosaur_type = dino.type.name
+            dino_view.diet = dino.diet
+            dino_view.id = dino.id
+            dinos.append(dino_view)
+    except ObjectNotFound:
+        return None
+    return dinos
+
+@db_session
+def get_dinos_by_type(type_id):
+    dinos = []
+    try:
+        type = models.Type[type_id]
+        for dino in type.dinosaurs:
+            dino_view = views.DinosaurView()
+            dino_view.name = dino.name
+            dino_view.length = dino.length
+            dino_view.weight = dino.weight
+            dino_view.period = dino.period.name
+            dino_view.dinosaur_type = dino.type.name
+            dino_view.diet = dino.diet
+            dino_view.id = dino.id
+            dinos.append(dino_view)
+    except ObjectNotFound:
+        return None
+
+    return dinos
+
+
 
 models.generate_mappings()
+
+if __name__ == "__main__":
+    types = [None, None, None]
+    types[0] = views.TypeView("Sauropod", "Sauropoda", "Very large herbivores that walked mostly on four legs.")
+    types[1] = views.TypeView("Theropod", "Theropoda", "Large carnivores that walked on two legs.")
+    types[2] = views.TypeView("Armoured dinosaurs", "Ankylosauria",
+                              "Medium-sized, four-legged herbivores with body armour, sometimes including tail spikes.")
+    for type in types:
+        add_type(type)
+    periods = [None, None, None, None]
+    periods[0] = views.PeriodView("Late Cretaceous", 101.5, 66, "Second part of Cretaceous")
+    periods[1] = views.PeriodView("Early Cretaceous", 145, 101.5, "First part of Cretaceous")
+    periods[2] = views.PeriodView("Early Jurassic", 201, 174, "First part of Jurassic")
+    periods[3] = views.PeriodView("Late Triassic", 237, 201, "First dinosaurs")
+    for period in periods:
+        add_period(period)
+    dinos = [None, None, None, None, None, None]
+    dinos[0] = views.DinosaurView("Iguanodon", 3, 10, 4000, 2, "herbivorous")
+    dinos[1] = views.DinosaurView("Fukuiraptor", 2, 4.2, 1000, 2, "carnivorous")
+    dinos[2] = views.DinosaurView("Vulcanodon", 1, 6.5, 3000, 3, "herbivorous")
+    dinos[3] = views.DinosaurView("Eoraptor", 2, 1, 200, 4, "carnivorous")
+    dinos[4] = views.DinosaurView("Futalognksosaurus", 1, 32, 70000, 1, "herbivorous")
+    dinos[5] = views.DinosaurView("Pentaceraptos", 3, 6.8, 2500, 1, "herbivorous")
+    for dino in dinos:
+        add_dino(dino)

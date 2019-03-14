@@ -28,6 +28,7 @@ class Type(db.Entity):
 
 
 def generate_mappings():
-    db.bind(provider='sqlite', filename='database.db')
+    db.bind(provider='sqlite', filename='database.db', create_db=True)
     db.generate_mapping(create_tables=True)
+
 

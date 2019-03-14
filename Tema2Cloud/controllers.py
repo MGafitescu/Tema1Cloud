@@ -163,6 +163,14 @@ def periods_get_controller(path):
     if match is not None:
         id = match.group(1)
         response, content, content_type = services.get_period(id)
+    match = re.match(r"/periods/(\d+)/dinosaurs$",path)
+    if match is not None:
+        id = match.group(1)
+        response, content, content_type = services.get_dinos_by_period(id)
+    match = re.match(r"/periods/\d+/dinosaurs/(\d+)$", path)
+    if match is not None:
+        id = match.group(1)
+        response, content, content_type = services.get_dino(id)
     return response, content, content_type
 
 
@@ -204,6 +212,14 @@ def types_get_controller(path):
     if match is not None:
         id = match.group(1)
         response, content, content_type = services.get_type(id)
+    match = re.match(r"/types/(\d+)/dinosaurs$",path)
+    if match is not None:
+        id = match.group(1)
+        response, content, content_type = services.get_dinos_by_type(id)
+    match = re.match(r"/types/\d+/dinosaurs/(\d+)$", path)
+    if match is not None:
+        id = match.group(1)
+        response, content, content_type = services.get_dino(id)
     return response, content, content_type
 
 
