@@ -1,0 +1,9 @@
+runtime: nodejs8
+
+handlers:
+
+  - url: /
+    static_files: dist/FrontEndT3/index.html
+    upload: dist/FrontEndT3/index.html
+  - url: /
+    static_dir: dist/FrontEndT3
